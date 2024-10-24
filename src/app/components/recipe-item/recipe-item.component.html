@@ -1,0 +1,9 @@
+<div *ngIf="recipe" class="recipe" (click)="onRecipeClick()">
+  <ion-card>
+    <img [alt]="recipe.name" [src]="recipe.image"/>
+    <ion-card-header>
+      <ion-card-title class="recipe-name">{{ recipe.name }}</ion-card-title>
+      <ion-card-subtitle>Meal Type: {{ recipe.mealType[0] }}</ion-card-subtitle>
+    </ion-card-header>
+  </ion-card>
+</div>

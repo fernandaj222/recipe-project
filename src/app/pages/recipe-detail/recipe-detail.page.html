@@ -1,0 +1,131 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button icon="arrow-back-outline"></ion-back-button>
+    </ion-buttons>
+    <ion-title *ngIf="recipe">{{ recipe.name }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div *ngIf="recipe">
+    <!-- Tags y Meal Type -->
+    <ion-card>
+      <ion-card-content>
+        <ion-label>Meal Type</ion-label>
+        <ion-chip *ngFor="let meal of recipe.mealType" color="secondary">
+          {{ meal }}
+        </ion-chip>
+        <br>
+        <ion-label>Tags</ion-label>
+        <ion-chip *ngFor="let tag of recipe.tags" color="secondary">
+          {{ tag }}
+        </ion-chip>
+      </ion-card-content>
+    </ion-card>
+
+    <!-- Imagen -->
+    <ion-card>
+      <ion-img [alt]="recipe.name" [src]="recipe.image"/>
+    </ion-card>
+
+    <!-- Información básica -->
+    <ion-card>
+      <ion-card-header>
+        <ion-card-title>Information Basic</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <ion-grid>
+          <ion-row>
+            <ion-col size="4">
+              <ion-icon color="primary" name="time" size="small"></ion-icon>
+              <p>
+                <b>Prep. Time</b>
+                <br>
+                {{ recipe.prepTimeMinutes }} mins
+              </p>
+            </ion-col>
+            <ion-col size="4">
+              <ion-icon color="primary" name="flame" size="small"></ion-icon>
+              <p>
+                <b>Cook Time</b>
+                <br>
+                {{ recipe.cookTimeMinutes }} mins
+              </p>
+            </ion-col>
+            <ion-col size="4">
+              <ion-icon color="primary" name="extension-puzzle" size="small"></ion-icon>
+              <p>
+                <b>Difficulty</b>
+                <br>
+                {{ recipe.difficulty }}
+              </p>
+            </ion-col>
+          </ion-row>
+      
+          <ion-row>
+            <ion-col size="4">
+              <ion-icon color="primary" name="people" size="small"></ion-icon>
+              <p>
+                <b>Servings</b>
+                <br>
+                {{ recipe.servings }}
+              </p>
+            </ion-col>
+            <ion-col size="4">
+              <ion-icon color="primary" name="nutrition" size="small"></ion-icon>
+              <p>
+                <b>Calories</b>
+                <br>
+                {{ recipe.caloriesPerServing }} kcal
+              </p>
+            </ion-col>
+            <ion-col size="4">
+              <ion-icon color="primary" name="star" size="small"></ion-icon>
+              <p>
+                <b>Rating</b>
+                <br>
+                {{ recipe.rating }}
+              </p>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-card-content>
+    </ion-card>
+  
+    <!-- Ingredientes -->
+    <ion-card>
+      <ion-card-header>
+        <ion-card-title>Ingredients</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <ion-list>
+          <ion-chip *ngFor="let ingredient of recipe.ingredients" outline="true">
+            {{ ingredient }}
+          </ion-chip>
+        </ion-list>
+      </ion-card-content>
+    </ion-card>
+  
+    <!-- Instrucciones -->
+    <ion-card>
+      <ion-card-header>
+        <ion-card-title>Instructions</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <ion-list class="ion-no-padding">
+          <ion-item
+            *ngFor="let step of recipe.instructions; let i = index"
+            lines="none"
+          >
+            <ion-checkbox slot="start" aria-label="Toggle task completion"></ion-checkbox>
+            <ion-label>
+              <h3>Step {{ i + 1 }}</h3>
+              <p>{{ step }}</p>
+            </ion-label>
+          </ion-item>
+        </ion-list>
+      </ion-card-content>
+    </ion-card>
+  </div>
+</ion-content>
