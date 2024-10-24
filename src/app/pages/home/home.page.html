@@ -18,10 +18,7 @@
         class="ion-no-padding"
         size="6"
       >
-        <app-recipe-item
-          [recipe]="recipe"
-          (recipeClicked)="onRecipeClicked($event)"
-        ></app-recipe-item>
+        <app-recipe-item [recipe]="recipe" (recipeClicked)="onRecipeClicked($event)"></app-recipe-item>
       </ion-col>
     </ion-row>
   </ion-grid>
